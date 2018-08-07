@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/atores', 'AtoresController@directory');
+
+Route::get('/atores/{id}', 'AtorController@procurar');
+
+Route::get('/filme/{id}', 'FilmeController@informar');
+
+Route::post('/atores/search', 'AtoresController@procurar');
