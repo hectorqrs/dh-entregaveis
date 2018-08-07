@@ -14,11 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/form' , 'FormController@form');
-
-Route::post('/form' , 'FormController@adicionar');
-
-Route::get('/actors/add' , 'ActorController@add');
-
-Route::post('/actors/add' , 'ActorController@adicionar');
