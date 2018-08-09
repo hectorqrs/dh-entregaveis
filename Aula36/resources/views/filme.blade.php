@@ -10,7 +10,7 @@
 <ul>
 @foreach($filmes as $posicao => $filme)
 <li>
-{{ $filme }}
+{{ $filme->getTitulo() }}
 </li>
 @endforeach
 </ul>

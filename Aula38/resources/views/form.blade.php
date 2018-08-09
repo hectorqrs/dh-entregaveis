@@ -14,6 +14,12 @@
          </ul>
          </div>
         @endif
+
+        @if(isset($sucesso) && $sucesso)
+          Filme Adicionado com Sucesso!
+        @else
+          Errro!!
+        @endif
         <form id="adicionarFilme" name="adicionarFilme" method="POST" action="/form">
             {{ csrf_field() }}
             <div class="form-group col-6 m-auto">
@@ -33,26 +39,8 @@
                 <input type="text" class="form-control" name="length" value="{{request()->get('length')}}"  id="length"/>
             </div>
             <div class="form-group col-6 m-auto">
-                <label>Data de estreia</label>
-                <select name="dia" class="form-control">
-                    <option value="">Dia</option>
-                      @for ($i=1; $i < 32; $i++)
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                      @endfor
-                </select>
-                  <select name="mes" class="form-control">
-                    <option value="">Mês</option>
-                    @for ($i=0; $i < 13; $i++)
-                      <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                    @endfor
-                    </select>
-                  <select name="ano" class="form-control">
-                    <option value="">Ano</option>
-                    @for ($i=2019; $i >= 1900; $i--)
-                      <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                    @endfor
-                  </select>
-                </div>
+              <label>Data de Nascimento</label>
+              <input type="date" class='form-control' name="data_nascimento" value='{{request()->get('data_nascimento')}}' id='data_nascimento'>
             </div>
             <br>
             <div class="form-group col-6 m-auto">

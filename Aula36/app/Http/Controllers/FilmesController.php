@@ -3,37 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Filmes;
 
 class FilmesController extends Controller
 {
-    private $filmes = [
-              1 => "Toy Story",
-              2 => "Procurando Nemo",
-              3 => "Avatar",
-              4 => "Star Wars: Episódio V",
-              5 => "Up",
-              6 => "Mary e Max"
-              ];
-
     public function procurarFilmeId($id){
-      return view('filmes')->with('filmes',$this->filmes)->with('id',$id);
+      $filmes = Filmes::find($id);
+      return view('filmes')->with('filmes',$filmes->getTitulo());
     }
 
 
     public function procurarFilmeNome($nome){
-      foreach ($this->filmes as $posicao => $filme) {
-        if($nome == $filme){
-          $resultado = $filme;
-          break;
-        }else{
-          $resultado = "Não foram encontrados resultados";
-        }
+      $resultado = Filmes::where('title','=',$nome)->get();
+      if (count($resultado) > 0) {
+        echo $resultado[0]->getTitulo();
+      }else{
+        echo 'Filme não encontrado';
       }
-      echo $resultado;
     }
 
     public function listarFilmes(){
-     return view('filme')->with('filmes',$this->filmes);
+      $filmes = Filmes::all();
+     return view('filme')->with('filmes',$filmes);
     }
 
     public function AdicionarFilme($filme){

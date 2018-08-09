@@ -18,6 +18,15 @@ class FormController extends Controller
         'awards' => 'integer|required',
         'length' => 'integer|required'
       ]);
-      return view('form', ['request' => $request]);
+      $inserir = Filmes::create([
+        'title' => $request->input('title'),
+        'rating' => $request->input('rating'),
+        'awards' => $request->input('awards'),
+        'length' => $request->input('length'),
+        'release_date' => $request->input('data_nascimento')
+      ]);
+      $sucesso = $inserir->save();
+
+      return view('form', ['request' => $request])->with('sucesso',$sucesso);
     }
 }
