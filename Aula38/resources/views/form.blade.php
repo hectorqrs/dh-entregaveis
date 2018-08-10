@@ -17,11 +17,9 @@
 
         @if(isset($sucesso) && $sucesso)
           Filme Adicionado com Sucesso!
-        @else
-          Errro!!
         @endif
         <form id="adicionarFilme" name="adicionarFilme" method="POST" action="/form">
-            {{ csrf_field() }}
+            @csrf
             <div class="form-group col-6 m-auto">
                 <label for="title">Título</label>
                 <input type="text" class="form-control" name="title" value="{{request()->get('title')}}" id="title"/>
@@ -39,8 +37,8 @@
                 <input type="text" class="form-control" name="length" value="{{request()->get('length')}}"  id="length"/>
             </div>
             <div class="form-group col-6 m-auto">
-              <label>Data de Nascimento</label>
-              <input type="date" class='form-control' name="data_nascimento" value='{{request()->get('data_nascimento')}}' id='data_nascimento'>
+              <label>Data de Lançamento</label>
+              <input type="date" class='form-control' name="data_lançamento" value='{{request()->get('data_lançamento')}}' id='data_lançamento'>
             </div>
             <br>
             <div class="form-group col-6 m-auto">

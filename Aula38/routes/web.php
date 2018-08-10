@@ -16,9 +16,22 @@ Route::get('/', function () {
 });
 
 Route::get('/form' , 'FormController@form');
-
 Route::post('/form' , 'FormController@adicionar');
 
-Route::get('/actors/add' , 'ActorController@add');
+/*Listar Atores */
 
+Route::get('/actors' , 'ActorController@Listar');
+
+// Adicionar Ator
+
+Route::get('/actors/add' , 'ActorController@add');
 Route::post('/actors/add' , 'ActorController@adicionar');
+
+// Atualizar Ator
+
+Route::get('/actor/form_edit/{id}', 'ActorController@edit');
+Route::put('/actor/edit/{id}', 'ActorController@update');
+
+// Deletar Atore
+
+Route::get('/actor/delete/{id}', 'ActorController@destroy');

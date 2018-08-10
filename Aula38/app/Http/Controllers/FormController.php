@@ -23,7 +23,7 @@ class FormController extends Controller
         'rating' => $request->input('rating'),
         'awards' => $request->input('awards'),
         'length' => $request->input('length'),
-        'release_date' => $request->input('data_nascimento')
+        'release_date' => $request->input('data_lançamento')
       ]);
       $sucesso = $inserir->save();
 
