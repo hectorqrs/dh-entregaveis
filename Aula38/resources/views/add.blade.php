@@ -28,6 +28,14 @@
                 <label for="rating">Classificação</label>
                 <input type="text" class="form-control" name="rating" value="{{request()->get('rating')}}"  id="rating"/>
             </div>
+            <label for='filme'>Filme Favorito</label>
+            <select name='filme' class="form-group col-6 m-auto">
+              <option value="null">Selecione seu Filme Favorito</option>
+              @foreach ($filmes as $filme)
+                <option value="{{$filme->id}}">{{$filme->title}}</option>
+              @endforeach
+              <option value=""></option>
+            </select>
             <br>
             <div class="form-group col-6 m-auto">
               <input type="submit" value="Adicionar Filme" name="submit" class="btn btn-primary"/>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Atores;
+use App\Filmes;
 
 class ActorController extends Controller
 {
@@ -13,23 +14,28 @@ class ActorController extends Controller
   }
 
   public function add(){
-    return view('add');
+    $filmes = Filmes::all();
+    return view('add')->with('filmes',$filmes);;
   }
 
   public function adicionar(Request $request){
     $this->validate($request,[
       'first_name' => 'required|max:30',
       'last_name' => 'max:100|required',
-      'rating' => 'integer|required'
+      'rating' => 'integer|required',
+      'filme' => 'required'
     ]);
     $inserir = Atores::create([
       'first_name' =>$request->input('first_name'),
       'last_name' =>$request->input('last_name'),
-      'rating' =>$request->input('rating')
+      'rating' =>$request->input('rating'),
+      'favorite_movie_id' =>$request->input('filme')
     ]);
     $sucesso = $inserir->save();
     $atores = Atores::all();
-    return view('actors', ['request' => $request])->with('sucesso',$sucesso)->with('atores',$atores);
+    return view('actors', ['request' => $request])
+    ->with('sucesso',$sucesso)
+    ->with('atores',$atores);
   }
 
   public function edit($id){

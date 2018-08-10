@@ -12,13 +12,16 @@ class AtoresController extends Controller
         return view('atores')->with('atores',$atores);
       }
 
+      public function procurar(Request $request){
+        $atores = Atores::where('first_name','=',$request->input('nome'))->get();
+        return view('procurar')->with('atores',$atores);
+      }
+      
+      // Aula39
+
       public function directory2(){
         $atores = Atores::join('movies','movies.id','=','actors.favorite_movie_id')->get();
         return view('atores')->with('atores',$atores);
       }
 
-      public function procurar(Request $request){
-        $atores = Atores::where('first_name','=',$request->input('nome'))->get();
-        return view('procurar')->with('atores',$atores);
-      }
 }
