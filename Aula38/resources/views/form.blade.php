@@ -40,6 +40,15 @@
               <label>Data de Lançamento</label>
               <input type="date" class='form-control' name="data_lançamento" value='{{request()->get('data_lançamento')}}' id='data_lançamento'>
             </div>
+            <div class="form-group col-6 m-auto">
+              <label>Gênero</label>
+              <select name="genero" class='form-control'>
+                <option value="null">Gênero do Filme</option>
+                @foreach ($generos as $key => $genero)
+                  <option value="{{ $genero->id }}">{{$genero->name}}</option>
+                @endforeach
+              </select>
+            </div>
             <br>
             <div class="form-group col-6 m-auto">
               <input type="submit" value="Adicionar Filme" name="submit" class="btn btn-primary"/>

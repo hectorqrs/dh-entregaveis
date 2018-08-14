@@ -8,5 +8,5 @@ class Filmes extends Model
 {
     protected $table = 'movies';
 
-    protected $fillable = ['title','rating','awards','length','release_date'];
+    protected $fillable = ['title','rating','awards','length','release_date','genre_id'];
 }
