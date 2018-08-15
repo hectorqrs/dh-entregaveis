@@ -6,7 +6,6 @@
   <li>Avaliação: {{$filme->getAvaliacao()}}</li>
   <li>Gênero: @if(isset($filme->genero->name)){{$filme->genero->name}} @else Nulo @endif</li>
 </ul>
-
 <h2>Lista de filmes de Atores que Participaram deste filme</h2>
 <ul>
   @foreach ($atores as $ator)
