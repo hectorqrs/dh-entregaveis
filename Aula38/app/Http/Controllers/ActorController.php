@@ -8,10 +8,7 @@ use App\Filmes;
 
 class ActorController extends Controller
 {
-  public function Listar(){
-    $atores = Atores::all();
-    return view('actors')->with('atores',$atores);
-  }
+
 
   public function add(){
     $filmes = Filmes::all();
@@ -57,4 +54,12 @@ class ActorController extends Controller
     $ator->delete();
     return redirect('/actors');
   }
+
+  // Aula 42
+
+  public function Listar(){
+    $atores = Atores::where('rating','>',7)->paginate(5);
+    return view('actors')->with('atores',$atores);
+  }
+
 }

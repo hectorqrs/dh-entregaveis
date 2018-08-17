@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Filmes;
 
 class Atores extends Model
 {
@@ -12,5 +13,11 @@ class Atores extends Model
 
   public function getNomeCompleto(){
     return $this->first_name." ".$this->last_name;
+  }
+
+  // Aula 42
+
+  public function movies(){
+    return $this->belongsToMany(Filmes::class, 'actor_movie', 'actor_id', 'movie_id');
   }
 }

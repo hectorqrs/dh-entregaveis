@@ -15,8 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Listar Filmes
+
+Route::get('/filmes', 'FormController@listar');
+
+/* Adicionar Filme */
+
 Route::get('/form' , 'FormController@form');
 Route::post('/form' , 'FormController@adicionar');
+
 
 /*Listar Atores */
 

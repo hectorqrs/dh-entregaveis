@@ -35,4 +35,14 @@ class FormController extends Controller
 
       return view('form', ['request' => $request])->with('sucesso',$sucesso)->with('generos',$generos);
     }
+
+    // Aula 42
+
+    public function listar(){
+      $filmes = Filmes::all();
+      $collection = collect($filmes)->filter(function($value){
+        return $value->length >= 130 or $value->rating == 10;
+      });
+      return view('filmes.filmes')->with('collection',$collection);
+    }
 }
